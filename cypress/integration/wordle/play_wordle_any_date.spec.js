@@ -2,7 +2,7 @@ import { tryNextWord } from '../utils/utils'
 
 describe('It tests wordle game', () => {
 
-  it('should solve it for real', () => {
+  it('should solve it for real', { retries: 2 }, () => {
 
     cy.intercept('GET', '**/main.*.js', req => {
       req.continue(res => {

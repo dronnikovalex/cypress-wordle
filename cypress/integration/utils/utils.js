@@ -9,7 +9,6 @@ export function tryNextWord(wordList) {
   let count = 0
 
   const word = Cypress._.sample(wordList)
-  cy.log('FROM SAMPLE FUNC', word)
   enterWord(word)
   
   cy.log('**word list with %d words**', wordList.length)
@@ -25,11 +24,10 @@ export function tryNextWord(wordList) {
       const letter = $tile.attr('letter')
      
       if (seen.has(letter)) {
-        cy.log('**POPALI V IF STATEMENT**', seen)
         return
       }
       seen.add(letter)
-      
+
       const evaluation = $tile.attr('evaluation')
 
       if (evaluation === 'absent') {
