@@ -6,4 +6,6 @@ jobs:
   test:
     uses: bahmutov/cypress-workflows/.github/workflows/standard.yml@v1
     with:
-      spec: cypress/integration/wordle/*.spec.js
+      spec: cypress/integration/wordle/test.spec.js
+    env:
+      CYPRESS_TEST_VARIABLE: ${{ secrets.MY_SECRET_VAR }}

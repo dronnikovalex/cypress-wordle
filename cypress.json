@@ -1,7 +1,8 @@
 {
-  "ignoreTestFiles": "**/!(*.spec).js",
+
   "includeShadowDom": true,
   "watchForFileChanges": false,
   "video": false,
-  "screenshotOnRunFailure": false
+  "screenshotOnRunFailure": false,
+  "trashAssetsBeforeRuns": true
 }
