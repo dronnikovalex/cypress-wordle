@@ -4,7 +4,6 @@ describe('It tests wordle game', () => {
 
     cy.task('test')
 
-    console.log(Cypress.env(TEST_VARIABLE))
   })
 
 })
