@@ -17,7 +17,7 @@ jobs:
         #  https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v2
         with:
-          spec: 'cypress/integration/wordle/test.js'
+          spec: 'cypress/integration/wordle/solving_wordle_for_real.spec.js'
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
           SENDGRID_FROM: ${{ secrets.SENDGRID_FROM }}
