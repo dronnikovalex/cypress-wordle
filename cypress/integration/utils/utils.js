@@ -68,7 +68,8 @@ export function tryNextWord(wordList) {
         cy.get('#board-container')
           .screenshot('hint', { overwrite: true })
         
-        cy.task('SendHintToEmail', {
+        // optional task to send wordle hint to email
+        cy.task('sendHintEmail', {
           hint,
           screenshot: `${Cypress.spec.name}/hint.png`
         })

@@ -4,10 +4,6 @@ name: Send hint to email
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -23,4 +19,6 @@ jobs:
         with:
           spec: 'cypress/integration/wordle/test.js'
         env:
-          CYPRESS_TEST_VARIABLE: ${{ secrets.MY_SECRET_VAR }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          SENDGRID_FROM: ${{ secrets.SENDGRID_FROM }}
+          WORDLE_HINT_EMAIL: ${{ secrets.WORDLE_HINT_EMAIL }}

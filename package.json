@@ -13,6 +13,7 @@
   "author": "Aleksey Dronnikov",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^7.6.0",
     "cypress": "^9.4.1"
   }
 }
