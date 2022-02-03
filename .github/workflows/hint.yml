@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Send hint to email
 
 # Controls when the workflow will run
 on:
@@ -21,6 +21,6 @@ jobs:
         #  https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v2
         with:
-          spec: 'cypress/integration/test.js'
+          spec: 'cypress/integration/wordle/test.js'
         env:
           CYPRESS_TEST_VARIABLE: ${{ secrets.MY_SECRET_VAR }}
