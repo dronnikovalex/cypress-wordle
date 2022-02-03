@@ -13,7 +13,7 @@ module.exports = (on, config) => {
       return null
     },
     test() {
-      if (!process.env.TEST_VARIABLE) {
+      if (!process.env.CYPRESS_TEST_VARIABLE) {
         console.log('NO VARAIBLE IN ENV')
         
       } else {
