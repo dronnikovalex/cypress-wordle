@@ -22,6 +22,6 @@ jobs:
           spec: 'cypress/integration/wordle/provide_start_word.spec.js'
           env: 'startWord=${{ github.event.inputs.startWord }}'
           record: true
-          tags: 'start-word'
+          tag: start-word
         env:
           CYPRESS_RECORD_KEY: '${{ secrets.CYPRESS_RECORD_KEY }}'
