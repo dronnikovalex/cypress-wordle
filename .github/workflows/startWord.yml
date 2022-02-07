@@ -1,13 +1,13 @@
 name: Should provide start word
 
-on: workflow_dispatch:
-  inputs:
-    startWord:
-      description: Pick the first word
-      type: string
-      default: 'start'
-      required: true
-
+on: 
+  workflow_dispatch:
+    inputs:
+      startWord:
+        description: Pick the first word
+        type: string
+        default: 'start'
+        required: true
 jobs:
   startword:
     runs-on: ubuntu-20.04
