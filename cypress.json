@@ -2,7 +2,5 @@
   "includeShadowDom": true,
   "watchForFileChanges": false,
   "video": false,
-  "screenshotOnRunFailure": false,
-  "trashAssetsBeforeRuns": true,
   "projectId": "7igufv"
 }
