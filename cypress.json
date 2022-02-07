@@ -1,8 +1,8 @@
 {
-
   "includeShadowDom": true,
   "watchForFileChanges": false,
   "video": false,
   "screenshotOnRunFailure": false,
-  "trashAssetsBeforeRuns": true
+  "trashAssetsBeforeRuns": true,
+  "projectId": "7igufv"
 }
