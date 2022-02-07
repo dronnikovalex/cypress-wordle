@@ -50,4 +50,7 @@ module.exports = (on, config) => {
       return response[0]
     },
   })
+
+  require('cypress-data-session/src/plugin')(on, config)
+  
 }

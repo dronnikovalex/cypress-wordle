@@ -2,7 +2,8 @@ import { tryNextWord } from '../utils/utils'
 
 describe('It tests wordle game', () => {
 
-  it('should solve it for real', { retries: 2 }, () => {
+
+  it(`should solve it for real`, { retries: 2 }, () => {
 
     cy.intercept('GET', '**/main.*.js', req => {
       req.continue(res => {
@@ -10,8 +11,9 @@ describe('It tests wordle game', () => {
       })
     }).as('words')
 
+
     //Start play wordle from a specific date by cy.clock
-    cy.clock(Date.UTC(2022, 1, 30), ['Date'])
+    cy.clock(Date.UTC(2022, 0, 2), ['Date'])
     // Now its possible to expose wordList property by using window object
     cy.visit('https://www.powerlanguage.co.uk/wordle/')
       .its('wordList')
@@ -24,6 +26,7 @@ describe('It tests wordle game', () => {
         tryNextWord(wordList)
 
       })
+
   })
 
 })
