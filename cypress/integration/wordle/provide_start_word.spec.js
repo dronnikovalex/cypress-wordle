@@ -81,7 +81,7 @@ describe('It tests wordle game', () => {
           .click()
           .wait(1000)
         
-        const word = Cypress.env('startWord') || 'start' // set value by providing it from environment 
+        const word = 'start' // set value by providing it from environment 
         tryNextWord(wordList, word)
 
       })
