@@ -19,7 +19,7 @@ jobs:
         #  https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v2
         with:
-          spec: 'cypress/integration/wordle/provide_start_word.spec.js'
+          spec: 'cypress/integration/wordle/test.spec.js'
           env: 'startWord=${{ github.event.inputs.startWord }}'
           record: true
           tag: start-word
