@@ -4,8 +4,13 @@ const path = require('path')
 const fs = require('fs')
 
 module.exports = (on, config) => {
-
+  
   on('task', {
+
+    message(word) {
+      console.log(word)
+      return null
+    },
 
     async sendHintEmail({ screenshot, hint }) {
       console.log('sending hint %s', hint)

@@ -14,7 +14,7 @@ function tryNextWord(wordList, word) {
   }
 
   expect(word, 'picked word').to.be.a('string')
-  cy.log(`**PLAYING WITH WORD - ${word}**`)
+  cy.task('message', `PLAYING WITH WORD - ${word}`)
   enterWord(word)
 
   let count = 0
@@ -48,7 +48,8 @@ function tryNextWord(wordList, word) {
       if (count == countUniqueLetters(word)) {
         cy.log('**SOLVED**')
           .wait(1000)
-        cy.screenshot('start-word', { overwrite: true })
+        cy.task('message', `Winners word - ${word}`)
+        // cy.screenshot('start-word', { overwrite: true })
       } else {
         cy.get('game-row[letters]').eq(5).invoke('attr', 'letters')
           .then(lastRowText => {
@@ -81,7 +82,7 @@ describe('It tests wordle game', () => {
           .click()
           .wait(1000)
         
-        const word = Cypress.env('startWord') || 'start' // set value by providing it from environment 
+        const word = Cypress.env('startWord') || 'hello' // set value by providing it from environment 
         tryNextWord(wordList, word)
 
       })
