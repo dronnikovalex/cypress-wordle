@@ -67,6 +67,8 @@ function tryNextWord(wordList, word) {
 describe('It tests wordle game', () => {
 
   it('should provide first word', { retries: 3 }, () => {
+    
+    const word = Cypress.env('startWord') || 'hello'
 
     cy.intercept('GET', '**/main.*.js', req => {
       req.continue(res => {
@@ -82,7 +84,7 @@ describe('It tests wordle game', () => {
           .click()
           .wait(1000)
         
-        const word = Cypress.env('startWord') || 'hello' // set value by providing it from environment 
+         // set value by providing it from environment 
         tryNextWord(wordList, word)
 
       })
