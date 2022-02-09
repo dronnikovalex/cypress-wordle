@@ -49,7 +49,7 @@ function tryNextWord(wordList, word) {
         cy.log('**SOLVED**')
           .wait(1000)
         cy.task('message', `Winners word - ${word}`)
-        // cy.screenshot('start-word', { overwrite: true })
+        cy.screenshot('start-word', { overwrite: true })
       } else {
         cy.get('game-row[letters]').eq(5).invoke('attr', 'letters')
           .then(lastRowText => {
