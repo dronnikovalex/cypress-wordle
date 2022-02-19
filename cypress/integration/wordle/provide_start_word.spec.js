@@ -1,4 +1,6 @@
+import { Start, Solved } from '../utils/pages'
 import { enterWord, countUniqueLetters } from '../utils/utils'
+const silent = { log: false }
 
 function tryNextWord(wordList, word) {
 
@@ -47,9 +49,9 @@ function tryNextWord(wordList, word) {
     }).then(() => {
       if (count == countUniqueLetters(word)) {
         cy.log('**SOLVED**')
-          .wait(1000)
+          .wait(1000, silent)
         cy.task('message', `Winners word - ${word}`)
-        cy.screenshot('start-word', { overwrite: true })
+        Solved.close()
       } else {
         cy.get('game-row[letters]').eq(5).invoke('attr', 'letters')
           .then(lastRowText => {
@@ -79,11 +81,7 @@ describe('It tests wordle game', () => {
     cy.visit('https://www.powerlanguage.co.uk/wordle/')
       .its('wordList')
       .then(wordList => {
-
-        cy.get('game-icon[icon="close"]:visible')
-          .click()
-          .wait(1000)
-        
+        Start.close()
          // set value by providing it from environment 
         tryNextWord(wordList, word)
 

@@ -2,5 +2,6 @@
   "includeShadowDom": true,
   "watchForFileChanges": false,
   "video": false,
-  "projectId": "7igufv"
+  "projectId": "7igufv",
+  "ignoreTestFiles": ["**/pages.js", "**/utils.js"]
 }

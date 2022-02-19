@@ -1,9 +1,11 @@
 
+const silent = { log: false }
+
 export function enterWord(word) {
   word.split('').forEach(letter => {
-    cy.window().trigger('keydown', { key: letter }).wait(100)
+    cy.window().trigger('keydown', { key: letter }).wait(100, silent)
   })
-  cy.window().trigger('keydown', { key: 'Enter' }).wait(2000)
+  cy.window().trigger('keydown', { key: 'Enter' }).wait(2000, silent)
 }
 
 export function countUniqueLetters(word) {
@@ -56,9 +58,9 @@ export function tryNextWord(wordList) {
         cy.log('**SOLVED**')
           .wait(1000)
 
-        // cy.get('game-icon[icon="close"]:visible')
-        //   .click()
-        //   .wait(1000)
+        cy.get('game-icon[icon="close"]:visible')
+          .click()
+          .wait(1000)
 
         // cy.get('game-tile[letter]')
         //   .find('.tile')
