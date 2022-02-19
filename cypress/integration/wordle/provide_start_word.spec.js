@@ -1,4 +1,4 @@
-import { Start, Solved } from '../utils/pages'
+import { Start, Solved, Playing } from '../utils/pages'
 import { enterWord, countUniqueLetters } from '../utils/utils'
 const silent = { log: false }
 
@@ -21,6 +21,8 @@ function tryNextWord(wordList, word) {
 
   let count = 0
   let seen = new Set()
+
+  Playing.getLetters(word) 
 
   cy.get(`game-row[letters=${word}]`)
     .find('game-tile').each(($tile, k) => {
@@ -82,7 +84,7 @@ describe('It tests wordle game', () => {
       .its('wordList')
       .then(wordList => {
         Start.close()
-         // set value by providing it from environment 
+         // set value by providing it from environment
         tryNextWord(wordList, word)
 
       })
