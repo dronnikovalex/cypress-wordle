@@ -1,3 +1,6 @@
+import { enterWord, countUniqueLetters } from '../utils/utils'
+
+import { tryNextWord } from '../wordle/provide_start_word.spec'
 const silent = { log: false }
 
 export const Start = {
@@ -21,12 +24,7 @@ export const Solved = {
 }
 
 export const Playing = {
-  enterWord(word) {
-    word.split('').forEach(letter => {
-      cy.window().trigger('keydown', { key: letter }).wait(100, silent)
-    })
-    cy.window().trigger('keydown', { key: 'Enter' }).wait(2000, silent)
-  },
+  enterWord,
 
   getLetters(word) {
     return cy
@@ -42,4 +40,15 @@ export const Playing = {
         })
       })
   },
+
+  isWinnable(wordList, word) {
+    cy.get('game-row[letters]').eq(5).invoke('attr', 'letters')
+    .then(lastRowText => {
+      if (lastRowText && count !== countUniqueLetters(word)) {
+        cy.log(`**CAN'T SOLVE THE GAME**`)
+      } else {
+        tryNextWord(wordList)
+      }
+    })
+  }
 }

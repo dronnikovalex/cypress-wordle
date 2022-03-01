@@ -4,10 +4,17 @@ describe('It tests wordle game', () => {
 
   it('this is %d item', { retries: 3 } , () => {
 
-    cy.visit('cypress/integration/wordle/index.html')
-    cy.get('a')
-      .should(Cypress._.noop)
+    const person = {
+      name: 'Alex',
+      getName() {
+        return this.name
+      }
+    }
 
+    const person2 = {
+      name: 'Kek'
+    }
+    console.log(person.getName.call(person2))
   })
 
 })

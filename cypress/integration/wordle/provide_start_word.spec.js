@@ -2,13 +2,13 @@ import { Start, Solved, Playing } from '../utils/pages'
 import { enterWord, countUniqueLetters } from '../utils/utils'
 const silent = { log: false }
 
-function tryNextWord(wordList, word) {
+export function tryNextWord(wordList, word) {
 
   if (wordList.length <= 20) {
     cy.log(wordList)
   }
 
-  cy.log(`**word list with ${wordList.length} words**`)
+  cy.log(`**CURRENT LENGTH OF WORDLIST = ${wordList.length}**`)
   expect(wordList).to.not.be.empty
 
   if (!word) {
@@ -19,10 +19,12 @@ function tryNextWord(wordList, word) {
   cy.task('message', `PLAYING WITH WORD - ${word}`)
   enterWord(word)
 
+  wordList = wordList.filter((w) => w !== word) //delete picked word from wordlist
+
   let count = 0
   let seen = new Set()
 
-  Playing.getLetters(word) 
+  Playing.getLetters(word).then(letters => console.log(letters))
 
   cy.get(`game-row[letters=${word}]`)
     .find('game-tile').each(($tile, k) => {
@@ -53,17 +55,9 @@ function tryNextWord(wordList, word) {
         cy.log('**SOLVED**')
           .wait(1000, silent)
         cy.task('message', `Winners word - ${word}`)
-        Solved.close()
+        Solved.close() // close winning modal
       } else {
-        cy.get('game-row[letters]').eq(5).invoke('attr', 'letters')
-          .then(lastRowText => {
-            if (lastRowText && count !== countUniqueLetters(word)) {
-              cy.log(`**CAN'T SOLVE THE GAME**`)
-            } else {
-              cy.log(`**CURRENT LENGTH OF WORDLIST = ${wordList.length}**`)
-              tryNextWord(wordList)
-            }
-          })
+        Playing.isWinnable(wordList, word)
       }
     })
 }
